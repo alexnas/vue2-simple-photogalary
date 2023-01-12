@@ -1,5 +1,6 @@
 <template>
 	<v-container>
+		<PhotoForm @addPhoto="addPhoto" />
 		<v-row>
 			<Photo v-for="photo in photos" :photo="photo" />
 		</v-row>
@@ -8,9 +9,11 @@
 
 <script>
 import Photo from '@/components/photo/Photo.vue';
+import PhotoForm from '@/components/photo/PhotoForm.vue';
 export default {
 	components: {
-		Photo
+		Photo,
+		PhotoForm
 	},
 
 	data: () => ({
@@ -25,6 +28,9 @@ export default {
 		fetchPhotos() {
 			this.axios.get("https://jsonplaceholder.typicode.com/photos?_limit=10")
 				.then(response => this.photos = response.data)
+		},
+		addPhoto(photo) {
+			this.photos.push(photo)
 		}
 	}
 }
