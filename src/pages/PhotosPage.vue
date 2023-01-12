@@ -10,14 +10,21 @@ export default {
 	components: {
 		Photo
 	},
+
 	data: () => ({
-		photos: [
-			{ id: 1, title: 'photo 1' },
-			{ id: 2, title: 'photo 2' },
-			{ id: 3, title: 'photo 3' },
-			{ id: 4, title: 'photo 4' },
-		]
-	})
+		photos: []
+	}),
+
+	mounted() {
+		this.fetchPhotos()
+	},
+
+	methods: {
+		fetchPhotos() {
+			this.axios.get("https://jsonplaceholder.typicode.com/photos?_limit=10")
+				.then(response => this.photos = response.data)
+		}
+	}
 }
 </script>
 
