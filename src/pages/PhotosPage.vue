@@ -1,6 +1,8 @@
 <template>
 	<v-container>
-		<Photo v-for="photo in photos" :photo="photo" />
+		<v-row>
+			<Photo v-for="photo in photos" :photo="photo" />
+		</v-row>
 	</v-container>
 </template>
 
