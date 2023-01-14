@@ -11,36 +11,12 @@
 
 <script>
 export default {
-	props: {
-		// photo: {
-		// 	type: Object,
-		// 	required: true,
-		// },
-		// value: {
-		// 	type: Boolean,
-		// 	default: false,
-		// }
-	},
-	// created() {
-	// 	this.dialogVisible = this.value
-	// },
-	data: () => ({
-		// dialogVisible: false,
-	}),
-	// watch: {
-	// 	value(newValue) {
-	// 		this.dialogVisible = newValue
-	// 	},
-	// 	dialogVisible(newValue) {
-	// 		this.$emit('input', newValue)
-	// 	}
-	// },
+
 	computed: {
 		full_title() {
 			return `Photo Title: ${this.$store.getters.getCurrentPhoto.title}`
 		}
 	}
-
 }
 </script>
 

@@ -5,7 +5,6 @@
 			<v-file-input v-model="img" />
 			<v-btn :disabled="!isFormValid" @click="onAddPhoto">Add new</v-btn>
 		</v-row>
-
 	</v-container>
 </template>
 
@@ -35,7 +34,6 @@ export default {
 				this.addPhoto(photo)
 				this.title = ''
 				this.img = null
-				// this.$emit('onAddPhoto', photo)
 			}
 			reader.readAsDataURL(this.img)
 		}

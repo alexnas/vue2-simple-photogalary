@@ -22,9 +22,6 @@ export default {
 	methods: {
 		...mapMutations(['showDialog', 'setCurrentPhoto']),
 		openPhoto() {
-			// this.$emit('openPhoto', this.photo)
-			// this.$store.commit('showDialog')
-			// this.$store.commit('setCurrentPhoto', this.photo)
 			this.showDialog()
 			this.setCurrentPhoto(this.photo)
 		}
