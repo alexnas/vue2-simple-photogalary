@@ -2,7 +2,7 @@
 	<v-container>
 		<PhotoForm @addPhoto="addPhoto" />
 		<v-row>
-			<Photo v-for="photo in photos" :photo="photo" @openPhoto="openPhoto" />
+			<Photo v-for="photo in $store.getters.getAllPhotos" :photo="photo" @openPhoto="openPhoto" />
 		</v-row>
 		<PhotoDialog :photo="currentPhoto" v-model="dialogVisible" />
 	</v-container>
@@ -26,14 +26,15 @@ export default {
 	}),
 
 	mounted() {
-		this.fetchPhotos()
+		// this.fetchPhotos()
+		this.$store.dispatch("fetchPhotos")
 	},
 
 	methods: {
-		fetchPhotos() {
-			this.axios.get("https://jsonplaceholder.typicode.com/photos?_limit=10")
-				.then(response => this.photos = response.data)
-		},
+		// fetchPhotos() {
+		// 	this.axios.get("https://jsonplaceholder.typicode.com/photos?_limit=10")
+		// 		.then(response => this.photos = response.data)
+		// },
 		addPhoto(photo) {
 			this.photos.push(photo)
 		},
