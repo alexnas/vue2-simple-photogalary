@@ -1,7 +1,7 @@
 <template>
 	<v-dialog v-model="dialogVisible" max-width="600">
 		<v-card>
-			<v-card-title>{{ photo.title }}</v-card-title>
+			<v-card-title>{{ full_title }}</v-card-title>
 			<v-card-text>
 				<v-img :src="photo.url" />
 			</v-card-text>
@@ -33,6 +33,11 @@ export default {
 		},
 		dialogVisible(newValue) {
 			this.$emit('input', newValue)
+		}
+	},
+	computed: {
+		full_title() {
+			return `Photo Title: ${this.photo.title}`
 		}
 	}
 
