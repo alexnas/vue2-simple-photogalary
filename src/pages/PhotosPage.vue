@@ -2,22 +2,27 @@
 	<v-container>
 		<PhotoForm @addPhoto="addPhoto" />
 		<v-row>
-			<Photo v-for="photo in photos" :photo="photo" />
+			<Photo v-for="photo in photos" :photo="photo" @openPhoto="openPhoto" />
 		</v-row>
+		<PhotoDialog :photo="currentPhoto" v-model="dialogVisible" />
 	</v-container>
 </template>
 
 <script>
 import Photo from '@/components/photo/Photo.vue';
+import PhotoDialog from '@/components/photo/PhotoDialog.vue';
 import PhotoForm from '@/components/photo/PhotoForm.vue';
 export default {
 	components: {
 		Photo,
-		PhotoForm
+		PhotoForm,
+		PhotoDialog
 	},
 
 	data: () => ({
-		photos: []
+		photos: [],
+		currentPhoto: {},
+		dialogVisible: false,
 	}),
 
 	mounted() {
@@ -31,6 +36,10 @@ export default {
 		},
 		addPhoto(photo) {
 			this.photos.push(photo)
+		},
+		openPhoto(photo) {
+			this.currentPhoto = photo
+			this.dialogVisible = true
 		}
 	}
 }
