@@ -3,20 +3,28 @@
 		<v-row class="d-flex">
 			<v-text-field v-model="title" />
 			<v-file-input v-model="img" />
-			<v-btn @click="addPhoto">Add new</v-btn>
+			<v-btn :disabled="!isFormValid" @click="onAddPhoto">Add new</v-btn>
 		</v-row>
 
 	</v-container>
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
 export default {
 	data: () => ({
 		title: '',
 		img: null,
 	}),
+	computed: {
+		isFormValid() {
+			return this.title.trim().length && this.img
+		}
+	},
 	methods: {
-		addPhoto() {
+		...mapMutations(['addPhoto']),
+
+		onAddPhoto() {
 			const reader = new FileReader()
 			reader.onload = () => {
 				let photo = {
@@ -24,7 +32,10 @@ export default {
 					title: this.title,
 					url: reader.result,
 				}
-				this.$emit('addPhoto', photo)
+				this.addPhoto(photo)
+				this.title = ''
+				this.img = null
+				// this.$emit('onAddPhoto', photo)
 			}
 			reader.readAsDataURL(this.img)
 		}

@@ -17,6 +17,9 @@ export default {
 		setPhotos(state, payload) {
 			state.photos = payload
 		},
+		addPhoto(state, payload) {
+			state.photos.push(payload)
+		},
 		showDialog(state) {
 			state.dialogVisible = true
 		},

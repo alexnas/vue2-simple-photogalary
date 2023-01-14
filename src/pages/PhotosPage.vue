@@ -1,6 +1,6 @@
 <template>
 	<v-container>
-		<PhotoForm @addPhoto="addPhoto" />
+		<PhotoForm />
 		<v-row>
 			<Photo v-for="photo in $store.getters.getAllPhotos" :photo="photo" />
 		</v-row>
@@ -39,13 +39,13 @@ export default {
 		// 	this.axios.get("https://jsonplaceholder.typicode.com/photos?_limit=10")
 		// 		.then(response => this.photos = response.data)
 		// },
-		addPhoto(photo) {
-			this.photos.push(photo)
-		},
-		openPhoto(photo) {
-			this.currentPhoto = photo
-			this.dialogVisible = true
-		}
+		// addPhoto(photo) {
+		// 	this.photos.push(photo)
+		// },
+		// openPhoto(photo) {
+		// 	this.currentPhoto = photo
+		// 	this.dialogVisible = true
+		// }
 	}
 }
 </script>
